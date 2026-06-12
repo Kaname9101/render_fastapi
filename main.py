@@ -1,7 +1,7 @@
 import random
 from fastapi import FastAPI
 import random  # ←これを追加
-
+from fastapi.responses import HTMLResponse
 app = FastAPI()
 
 # (すでに書かれている @app.get("/") の処理があれば残しておいてOKです)
@@ -27,3 +27,22 @@ def omikuji():
     def roll_dice():
         dice_number = random.randiant(1,6)
         return {"message": "サイコロを振りました！", "result": dice_number}
+
+@app.get("/index")
+def index():
+    html_content = """
+    <html>
+        <head>
+            <title>Some HTML in here</title>
+        </head>
+        <body>
+            <h1>Look ma! HTML!</h1>
+            <p> 日本語</p>
+            <ul>
+                <li>今日のお昼ご飯は海鮮丼</li>
+            </ul>
+        </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content, status_code=200)
+​
