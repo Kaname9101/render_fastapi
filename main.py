@@ -24,8 +24,8 @@ def omikuji():
     return {"result": omikuji_list[random.randrange(8)]}
 
 @app.get("/dice")
-    def roll_dice():
-        dice_number = random.randiant(1,6)
+def roll_dice():
+        dice_number = random.randint(1,6)
         return {"message": "サイコロを振りました！", "result": dice_number}
 
 @app.get("/index")
