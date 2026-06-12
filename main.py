@@ -22,3 +22,8 @@ def omikuji():
 
     # 8種類あるので、0から7の中からランダムに選ぶ
     return {"result": omikuji_list[random.randrange(8)]}
+
+@app.get("/dice")
+    def roll_dice():
+        dice_number = random.randiant(1,6)
+        return {"message": "サイコロを振りました！", "result": dice_number}
